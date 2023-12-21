@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>pom</packaging>
+
+  <groupId>ru.atc.mvd.gismu.shared2</groupId>
+  <artifactId>shared-components-v2</artifactId>
+  <version>1.0.0</version>
+
+  <description>Общие библиотеки</description>
+
+  <properties>
+    <shared.group-id.version>ru.atc.mvd.gismu.shared2</shared.group-id.version>
+
+    <!-- Shared libs -->
+    <checkstyle-rules.version>0.0.1</checkstyle-rules.version>
+    <spotbugs-rules.version>0.0.1</spotbugs-rules.version>
+
+    <code-analysis-rules.version>0.0.2</code-analysis-rules.version>
+    <dependency-management-base.version>0.0.2</dependency-management-base.version>
+    <dependency-management-springboot2.version>0.0.2</dependency-management-springboot2.version>
+    <exception-handler.version>0.0.2</exception-handler.version>
+    <swagger-autoconfig.version>0.0.2</swagger-autoconfig.version>
+    <logger.config-logger.version>0.0.1</logger.config-logger.version>
+    <logger.trace-logger.version>0.0.1</logger.trace-logger.version>
+    <database.springboot-jpa-data-core.version>0.0.1</database.springboot-jpa-data-core.version>
+    <database.springboot-jpa-data-search.version>0.0.1</database.springboot-jpa-data-search.version>
+    <cryptography.crypto-core.version>0.0.1</cryptography.crypto-core.version>
+    <communication.openfeign.version>0.0.1</communication.openfeign.version>
+    <communication.kafka.version>0.0.1</communication.kafka.version>
+
+    <!-- Repo url -->
+    <!--suppress UnresolvedMavenProperty -->
+    <release.repo.url>${env.MAVEN_PUBLISH_REPO_URL}</release.repo.url>
+
+    <!-- Common settings -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
+
+  <modules>
+    <module>code-analysis-rules</module>
+    <module>build-tools</module>
+    <module>dependency-management</module>
+    <module>exception-handler</module>
+    <module>documentation</module>
+    <module>logging</module>
+    <module>database</module>
+    <module>cryptography</module>
+    <module>communication</module>
+  </modules>
+
+  <distributionManagement>
+    <repository>
+      <id>artifactory</id>
+      <name>gismugeo-releases</name>
+      <url>https://toolset.phoenixit.ru/artifactory/gismugeo-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>gismugeo-snapshot</name>
+      <url>https://toolset.phoenixit.ru/artifactory/gismugeo-snaphot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

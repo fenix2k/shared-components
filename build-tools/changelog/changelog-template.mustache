@@ -1,0 +1,39 @@
+# Список изменений.
+{{#tags}}
+{{#ifReleaseTag .}}
+## [{{name}}](https://gitlab.akb-it.ru/fgislk/backend/{{ ownerName }}/{{ repoName }}/-/tags/{{name}}) ({{tagDate .}})
+*Количество коммитов: {{commitsCountInTag commits}}*
+{{#ifContainsFeatureCommits commits}}
+### Новые возможности
+{{#commits}}
+{{#ifFeature message}}
+- {{formatCommitMessage message}} ([{{hash}}](https://gitlab.akb-it.ru/fgislk/backend/{{ ownerName }}/{{ repoName }}/commit/{{hashFull}}))
+{{/ifFeature}}
+{{/commits}}
+{{/ifContainsFeatureCommits}}
+{{#ifContainsBugfixCommits commits}}
+### Исправления ошибок
+{{#commits}}
+{{#ifBugfix message}}
+- {{formatCommitMessage message}} ([{{hash}}](https://gitlab.akb-it.ru/fgislk/backend/{{ ownerName }}/{{ repoName }}/commit/{{hashFull}}))
+{{/ifBugfix}}
+{{/commits}}
+{{/ifContainsBugfixCommits}}
+{{#ifContainsRevertCommits commits}}
+### Откат изменений
+{{#commits}}
+{{#ifRevert message}}
+- {{formatCommitMessage message}} ([{{hash}}](https://gitlab.akb-it.ru/fgislk/backend/{{ ownerName }}/{{ repoName }}/commit/{{hashFull}}))
+{{/ifRevert}}
+{{/commits}}
+{{/ifContainsRevertCommits}}
+{{#ifContainsOtherCommits commits}}
+### Прочее
+{{#commits}}
+{{#ifOtherCommit message}}
+- {{formatCommitMessage message}} ([{{hash}}](https://gitlab.akb-it.ru/fgislk/backend/{{ ownerName }}/{{ repoName }}/commit/{{hashFull}}))
+{{/ifOtherCommit}}
+{{/commits}}
+{{/ifContainsOtherCommits}}
+{{/ifReleaseTag}}
+{{/tags}}

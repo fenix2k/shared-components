@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  ru.atc.mvd.gismu.shared2.logging.config.logger.springboot.starter.config.ConfigLoggerConfig

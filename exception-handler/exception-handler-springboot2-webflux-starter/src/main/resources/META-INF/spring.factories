@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  ru.atc.mvd.gismu.shared2.exceptionhandler.springboot2.webflux.ExceptionHandlerAdvisorConfig

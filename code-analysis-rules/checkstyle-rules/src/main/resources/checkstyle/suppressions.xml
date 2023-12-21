@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+<suppressions>
+    <suppress checks=".*" files="[/\\]target[/\\]"/>
+    <suppress checks="LineLength" files=".*\.properties"/>
+    <suppress checks="LineLength" files=".*\.yml"/>
+    <suppress checks="LineLength" files=".*Enum\.java"/>
+    <suppress checks="LineLength" files=".*Type\.java"/>
+    <suppress checks="LineLength" files=".*FeignClient.*\.java"/>
+
+    <suppress checks="MissingJavadocMethod" files=".*Test\.java"/>
+    <suppress checks="MissingJavadocType" files=".*Test\.java"/>
+    <suppress checks="MultipleStringLiterals" files=".*Test\.java"/>
+    <suppress checks="MethodName" files=".*Test\.java"/>
+</suppressions>

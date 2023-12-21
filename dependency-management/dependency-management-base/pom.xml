@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>ru.atc.mvd.gismu.shared2</groupId>
+		<artifactId>dependency-management</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>dependency-management-base</artifactId>
+	<version>${revision}</version>
+
+	<description>Шаблон базовой библиотеки управления версиями зависимостей проекта</description>
+
+	<properties>
+		<revision>${dependency-management-base.version}</revision>
+
+		<!-- Maven -->
+		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+		<openapi-generator-maven-plugin.version>6.0.1</openapi-generator-maven-plugin.version>
+		<jib-maven-plugin.version>3.2.1</jib-maven-plugin.version>
+		<liquibase-maven-plugin.version>4.9.1</liquibase-maven-plugin.version>
+
+		<!-- Database -->
+		<postgresql.version>42.5.3</postgresql.version>
+
+		<!-- ORM -->
+		<hibernate.version>5.6.7.Final</hibernate.version>
+
+		<!-- Object conversion -->
+		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+
+		<!-- JSON -->
+		<jackson.core.version>2.13.2</jackson.core.version>
+
+		<!-- Apache -->
+		<apache.poi.version>5.2.2</apache.poi.version>
+		<apache.poi-ooxml.version>5.0.0</apache.poi-ooxml.version>
+		<apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+
+		<!-- Google -->
+		<guava.version>31.1-jre</guava.version>
+
+		<!-- Http -->
+		<openfeign.version>11.8</openfeign.version>
+
+		<!-- Validation -->
+		<jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
+
+		<!-- Caching -->
+		<caffeine.cache.version>3.1.1</caffeine.cache.version>
+
+		<!-- Logging -->
+		<slf4j.version>1.7.36</slf4j.version>
+		<logback.version>1.2.11</logback.version>
+
+		<!-- Codegen -->
+		<lombok.version>1.18.24</lombok.version>
+
+		<!-- Migration DB -->
+		<liquibase-core.version>4.11.0</liquibase-core.version>
+
+		<!-- Unit Tests -->
+		<junit.jupiter.version>5.9.0-M1</junit.jupiter.version>
+		<junit.platform.version>1.9.0-M1</junit.platform.version>
+		<mockneat.version>0.4.7</mockneat.version>
+		<assert-j.version>3.23.1</assert-j.version>
+		<easy-random-core.version>5.0.0</easy-random-core.version>
+		<testcontainers-bom.version>1.17.2</testcontainers-bom.version>
+		<make-it-easy.version>4.0.1</make-it-easy.version>
+
+		<!-- Other -->
+		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+		<snakeyaml.version>1.30</snakeyaml.version>
+		<jaxb-api.version>2.3.1</jaxb-api.version>
+		<jjwt.version>0.11.5</jjwt.version>
+		<bouncycastle.version>1.71</bouncycastle.version>
+		<oltu.oauth2.version>1.0.2</oltu.oauth2.version>
+		<micrometer-registry-prometheus.version>1.9.1</micrometer-registry-prometheus.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Database -->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.version}</version>
+			</dependency>
+
+			<!-- Hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-jpamodelgen</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<!-- MyBatis -->
+
+			<!-- Object conversion -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct-processor</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-mapstruct-binding</artifactId>
+				<version>${lombok-mapstruct-binding.version}</version>
+			</dependency>
+
+			<!-- JSON -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.module</groupId>
+				<artifactId>jackson-modules-java8</artifactId>
+				<version>${jackson.core.version}</version>
+				<type>pom</type>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-jsr310</artifactId>
+				<version>${jackson.core.version}</version>
+			</dependency>
+
+			<!-- Apache -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${apache.poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${apache.poi-ooxml.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${apache.commons.lang3.version}</version>
+			</dependency>
+
+			<!-- Http -->
+			<dependency>
+				<groupId>io.github.openfeign</groupId>
+				<artifactId>feign-okhttp</artifactId>
+				<version>${openfeign.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.openfeign</groupId>
+				<artifactId>feign-jackson</artifactId>
+				<version>${openfeign.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.openfeign</groupId>
+				<artifactId>feign-slf4j</artifactId>
+				<version>${openfeign.version}</version>
+			</dependency>
+
+			<!-- Validation -->
+			<dependency>
+				<groupId>jakarta.validation</groupId>
+				<artifactId>jakarta.validation-api</artifactId>
+				<version>${jakarta.validation-api.version}</version>
+			</dependency>
+
+			<!-- Caching -->
+			<dependency>
+				<groupId>com.github.ben-manes.caffeine</groupId>
+				<artifactId>caffeine</artifactId>
+				<version>${caffeine.cache.version}</version>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<!-- Codegen -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+
+			<!-- Migration DB -->
+			<dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-core</artifactId>
+				<version>${liquibase-core.version}</version>
+			</dependency>
+
+			<!-- Unit Tests -->
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.assertj</groupId>
+				<artifactId>assertj-core</artifactId>
+				<version>${assert-j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-runner</artifactId>
+				<version>${junit.platform.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>testcontainers</artifactId>
+				<version>${testcontainers-bom.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${testcontainers-bom.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${testcontainers-bom.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeasy</groupId>
+				<artifactId>easy-random-core</artifactId>
+				<version>${easy-random-core}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.natpryce</groupId>
+				<artifactId>make-it-easy</artifactId>
+				<version>${make-it-easy.version}</version>
+			</dependency>
+
+			<!-- Other -->
+			<dependency>
+				<groupId>javax.annotation</groupId>
+				<artifactId>javax.annotation-api</artifactId>
+				<version>${javax.annotation-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.xml.bind</groupId>
+				<artifactId>jaxb-api</artifactId>
+				<version>${jaxb-api.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.google.cloud.tools</groupId>
+					<artifactId>jib-maven-plugin</artifactId>
+					<version>${jib-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
